@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Cliente" as C
+actor "Comerciante" as M
+
+
+rectangle "1.Gestión de Perfil" {
+  
+  (Identificarse / Registro) as UC1
+  (Editar perfil) as UC2
+  
+ }
+  
+
+M --> UC2
+
+C --> UC2
+
+
+
+UC2 ..> UC1 : <<include>>
+
+@enduml

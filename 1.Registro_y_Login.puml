@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Cliente" as C
+actor "Comerciante" as M
+
+rectangle "1.Registro y Login" {
+  
+  (Identificarse / Registro) as UC1
+  (Validación de Identificación / Registro) as UC2
+  (Acceso al sistema) as UC3
+  
+ }
+  
+M --> UC1
+
+C --> UC1
+
+UC1 ..> UC2 : <<include>>
+UC2 ..> UC3
+
+@enduml

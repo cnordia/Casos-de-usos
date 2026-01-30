@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Comerciante" as C
+
+
+rectangle "1.CRUD" {
+  
+  (CRUD) as UC1
+  (Producto) as UC2
+  (Servicio) as UC3
+  
+ }
+  
+
+C --> UC1
+
+
+
+UC1 ..> UC2
+UC1 ..> UC3
+
+
+@enduml
