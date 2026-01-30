@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+
+actor "Cliente" as C
+
+
+rectangle "3.Búsqueda y Filtrado" {
+  
+  (Acceso Menú Mategoría) as UC1
+  (Mostrado de todas las Categorías) as UC2
+  (Selcción de una o varias categorías) as UC3
+  (Búsqueda de menos a más un radio de km la categoría) as UC4
+ }
+  
+
+C --> UC1
+UC1 ..> UC2: <<include>>
+UC2 --> UC3
+UC3 --> UC4
+
+@enduml

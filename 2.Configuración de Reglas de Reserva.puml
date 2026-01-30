@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+
+actor "Comerciante" as C
+
+
+rectangle "2.Configuración de Reglas de Reserva" {
+  
+  (Establecer límite de tiempo) as UC1
+  (Producto / Servicio) as UC2
+ }
+  
+
+C --> UC1
+UC1 ..> UC2: <<include>>
+
+@enduml

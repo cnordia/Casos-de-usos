@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+
+actor "Sistema" as S
+
+
+rectangle "2.Productos Destacados" {
+  
+  (Análisis de datos) as UC1
+  (Vista para todos según resultados) as UC2
+ }
+  
+
+S --> UC1
+UC1 ..> UC2: <<include>>
+
+@enduml

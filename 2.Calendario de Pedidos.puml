@@ -6,15 +6,14 @@ skinparam packageStyle rectangle
 actor "Comerciante" as C
 
 
-rectangle "2.Galería de Imágenes" {
+rectangle "2.Calendario de Pedidos" {
   
-  (Subir imagen portada) as UC1
-  (Subir imagenes ) as UC2
+  (Ver Calendario) as UC1
+  (Vista detallada del pedido/servicio) as UC2
  }
   
 
 C --> UC1
-C --> UC2
-
+UC1 ..> UC2
 
 @enduml
