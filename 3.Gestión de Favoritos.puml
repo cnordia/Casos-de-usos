@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Cliente" as C
+actor "Base de Datos" as DB
+
+rectangle "3. Gestión de Favoritos" {
+  
+  (Visualizar Ficha del Comercio) as UC_Vista
+  (Marcar / Desmarcar Favorito) as UC_Marcar
+ 
+  (Navegar al Comercio) as UC_Navegar
+}
+
+C --> UC_Navegar
+
+UC_Vista <.. UC_Marcar : <<extend>>
+
+
+UC_Navegar --> UC_Vista : Redirige
+
+UC_Marcar -- DB : Insert / Delete
+
+@enduml

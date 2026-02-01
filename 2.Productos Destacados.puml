@@ -2,18 +2,25 @@
 left to right direction
 skinparam packageStyle rectangle
 
+actor "Comerciante" as M
+actor "Cliente" as C
 
-actor "Sistema" as S
-
-
-rectangle "2.Productos Destacados" {
+rectangle "2. Productos Destacados" {
   
-  (Análisis de datos) as UC1
-  (Vista para todos según resultados) as UC2
- }
+  (Gestionar Catálogo de Productos) as UC_Gestion
+  (Marcar como 'Famoso' / 'Destacado') as UC_Marcar
   
+  (Visualizar Perfil del Comercio) as UC_VerPerfil
+  (Ver Sección 'Recomendados') as UC_VerDestacados
+}
 
-S --> UC1
-UC1 ..> UC2: <<include>>
+M --> UC_Gestion
+
+UC_Gestion <.. UC_Marcar : <<extend>>
+
+
+C --> UC_VerPerfil
+
+UC_VerPerfil ..> UC_VerDestacados : <<include>>
 
 @enduml

@@ -2,22 +2,30 @@
 left to right direction
 skinparam packageStyle rectangle
 
-
 actor "Cliente" as C
+actor "API Maps" as MAPS
 
-
-rectangle "3.Búsqueda y Filtrado" {
+rectangle "3. Búsqueda y Geolocalización" {
   
-  (Acceso Menú Mategoría) as UC1
-  (Mostrado de todas las Categorías) as UC2
-  (Selcción de una o varias categorías) as UC3
-  (Búsqueda de menos a más un radio de km la categoría) as UC4
- }
+  (Buscar Comercios Locales) as UC_Buscar
   
+  (Filtrar por Categoría) as UC_Filtrar
+  (Filtrar por Distancia) as UC_Dist
+  
+  (Visualizar Resultados en Mapa) as UC_VerMapa
+  (Obtener Ubicación GPS) as UC_GPS
+}
 
-C --> UC1
-UC1 ..> UC2: <<include>>
-UC2 --> UC3
-UC3 --> UC4
+C --> UC_Buscar
+
+UC_Buscar <.. UC_Filtrar : <<extend>>
+UC_Buscar <.. UC_Dist : <<extend>>
+
+UC_Buscar ..> UC_VerMapa : <<include>>
+
+UC_VerMapa ..> UC_GPS : <<include>>
+
+UC_VerMapa <-- MAPS : Renderizar mapa
+UC_GPS --> MAPS : Solicitar coordenadas
 
 @enduml

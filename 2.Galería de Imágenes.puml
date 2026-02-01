@@ -2,19 +2,32 @@
 left to right direction
 skinparam packageStyle rectangle
 
+actor "Comerciante" as M
+actor "Cliente" as C
 
-actor "Comerciante" as C
-
-
-rectangle "2.Galería de Imágenes" {
+rectangle "2. Gestión de Imágenes" {
   
-  (Subir imagen portada) as UC1
-  (Subir imagenes ) as UC2
- }
+  (Editar Perfil de Comercio) as UC_Editar
+  (Subir Foto Portada) as UC_Subir
+  (Subir Galería Secundaria) as UC_Galería
   
+  (Buscar/Listar Comercios) as UC_Lista
+  (Ver Detalle del Comercio) as UC_Detalles
+  
+  (Visualizar Foto Portada) as UC_Vista
+  (Visualizar Galería Completa) as UC_VistaGalería
+}
 
-C --> UC1
-C --> UC2
+M --> UC_Editar
+
+UC_Editar <.. UC_Subir : <<extend>>
+UC_Editar <.. UC_Galería : <<extend>>
+
+UC_Lista ..> UC_Vista : <<include>>
+UC_Detalles ..> UC_VistaGalería : <<include>>
+
+C --> UC_Detalles
+UC_Detalles ..> UC_VistaGalería : <<include>>
 
 
 @enduml

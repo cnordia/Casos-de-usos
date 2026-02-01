@@ -18,6 +18,6 @@ M --> UC1
 C --> UC1
 
 UC1 ..> UC2 : <<include>>
-UC2 ..> UC3
+UC2 ..> UC3 : <<include>>
 
 @enduml

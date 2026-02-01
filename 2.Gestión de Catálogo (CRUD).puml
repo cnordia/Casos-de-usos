@@ -2,24 +2,25 @@
 left to right direction
 skinparam packageStyle rectangle
 
-actor "Comerciante" as C
+actor "Comerciante" as M
 
-
-rectangle "1.CRUD" {
+rectangle "2. Gestión de Catálogo (CRUD)" {
   
-  (CRUD) as UC1
-  (Producto) as UC2
-  (Servicio) as UC3
+  (Consultar Listado de Productos) as UC_Leer
+(Crear Nuevo Producto) as UC_Crear
+  (Editar Datos / Stock) as UC_Editar
+  (Eliminar Producto) as UC_Eliminar
   
- }
-  
+  (Confirmar Eliminación) as UC_Confirmar
+}
 
-C --> UC1
+M --> UC_Leer
 
 
+UC_Leer <.. UC_Crear : <<extend>>
+UC_Leer <.. UC_Editar : <<extend>>
+UC_Leer <.. UC_Eliminar : <<extend>>
 
-UC1 ..> UC2
-UC1 ..> UC3
-
+UC_Eliminar ..> UC_Confirmar : <<include>>
 
 @enduml

@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Cliente" as C
+
+rectangle "4. Desglose por Comercio" {
+  (Añadir Producto) as UC_AñadirProd
+  (Añadir a Cesta de Tienda) as UC_Cesta
+  (Añadir a Carrito Global) as UC_Carrito
+
+}
+
+C --> UC_AñadirProd
+UC_AñadirProd ..> UC_Cesta: <<include>>
+UC_Cesta ..> UC_Carrito: <<include>>
+
+@enduml

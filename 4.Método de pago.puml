@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Cliente" as C
+
+rectangle "4. Método de Pago" {
+  
+  (Finalizar Pedido de la Tienda) as UC_Finalizar
+  
+  (Elegir Método de Pago) as UC_Choose
+  
+  (Opción A: Pago Online) as UC_Online
+  (Opción B: Pagar en Caja/Recogida) as UC_Cash
+  
+  (Marcar Pedido como 'Pagado') as UC_Pagado
+  (Marcar Pedido como 'Pendiente de Pago') as UC_Pendiente
+}
+
+C --> UC_Finalizar
+
+UC_Finalizar ..> UC_Choose : <<include>>
+
+UC_Choose <.. UC_Online : <<extend>>
+UC_Choose <.. UC_Cash : <<extend>>
+
+UC_Online -- API : Procesar tarjeta
+UC_Online ..> UC_Pagado : <<include>>
+
+UC_Cash ..> UC_Pendiente : <<include>>
+
+@enduml

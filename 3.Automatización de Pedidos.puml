@@ -1,0 +1,30 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Cliente" as C
+actor "Sistema" as S
+
+rectangle "3. Automatización de Pedidos" {
+  
+  (Programar Compra Recurrente) as UC_Programar
+  (Definir Frecuencia / Periodicidad) as UC_Freq
+  (Configurar Recordatorios) as UC_Alert
+  
+  (Generar Pedido Automático) as UC_Ejecutar
+  (Enviar Notificación de Compra) as UC_Notificar
+}
+
+C --> UC_Programar
+
+UC_Programar ..> UC_Freq : <<include>>
+
+UC_Programar <.. UC_Alert : <<extend>>
+
+
+S --> UC_Ejecutar
+
+UC_Ejecutar ..> UC_Notificar : <<include>>
+UC_Notificar --> C : Email
+
+@enduml

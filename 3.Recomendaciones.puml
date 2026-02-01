@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Cliente" as C
+
+rectangle "3. Sistema de Recomendaciones" {
+  
+  (Visualizar Ficha del Comercio) as UC_Vista
+  
+  (Analizar Historial de Compras) as UC_Analizar
+  
+  (Priorizar/Ordenar Productos Habituales) as UC_Ordenar
+}
+
+C --> UC_Vista
+
+UC_Vista ..> UC_Analizar : <<include>>
+
+UC_Analizar ..> UC_Ordenar : <<include>>
+
+
+@enduml

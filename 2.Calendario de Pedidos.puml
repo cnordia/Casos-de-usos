@@ -2,18 +2,29 @@
 left to right direction
 skinparam packageStyle rectangle
 
+actor "Comerciante" as M
+actor "Base de Datos" as DB
 
-actor "Comerciante" as C
-
-
-rectangle "2.Calendario de Pedidos" {
+rectangle "2. Calendario de Pedidos" {
   
-  (Ver Calendario) as UC1
-  (Vista detallada del pedido/servicio) as UC2
- }
+  (Visualizar Calendario de Pedidos) as UC_Cal
   
+  (Agrupar por Fecha y Hora) as UC_Sort
+  (Filtrar solo 'Pendientes') as UC_Filter
+  
+  (Ver Detalle del Pedido) as UC_Detalles
+  (Cambiar Vista Día/Semana) as UC_Vista
+}
 
-C --> UC1
-UC1 ..> UC2
+M --> UC_Cal
+
+UC_Cal ..> UC_Sort : <<include>>
+UC_Cal ..> UC_Filter : <<include>>
+
+UC_Cal <.. UC_Detalles : <<extend>>
+
+UC_Cal <.. UC_Vista : <<extend>>
+
+UC_Sort -- DB : Consulta SQL (Order By Date)
 
 @enduml

@@ -1,0 +1,26 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Cliente" as C
+
+rectangle "4.Carrito Multimedia" {
+  
+  (Visualizar Carrito Global) as UC_Vista
+  
+  (Agrupar Ítems por Tienda) as UC_Group
+  
+  (Seleccionar Fecha de Recogida) as UC_Fecha
+  
+  (Validar Horario de la Tienda) as UC_Validate
+}
+
+C --> UC_Vista
+
+UC_Vista ..> UC_Group : <<include>>
+
+UC_Group <.. UC_Fecha : <<extend>>
+
+UC_Fecha ..> UC_Validate : <<include>>
+
+@enduml

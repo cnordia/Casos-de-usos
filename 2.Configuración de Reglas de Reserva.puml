@@ -2,18 +2,30 @@
 left to right direction
 skinparam packageStyle rectangle
 
-
-actor "Comerciante" as C
-
+actor "Comerciante" as M
+actor "Cliente" as C
 
 rectangle "2.Configuración de Reglas de Reserva" {
   
-  (Establecer límite de tiempo) as UC1
-  (Producto / Servicio) as UC2
- }
+  (Gestionar Configuración de Producto) as UC_Config
   
+  (Establecer Límite de Días) as UC_Establecer
+  
+  (Seleccionar Fecha de Recogida) as UC_Fecha
+  
+  (Validar Fecha Permitida) as UC_Validar
+  (Mostrar Error 'Fecha no disponible') as UC_Error
+}
 
-C --> UC1
-UC1 ..> UC2: <<include>>
+M --> UC_Config
+
+UC_Config <.. UC_Establecer : <<extend>>
+
+C --> UC_Fecha
+
+UC_Fecha ..> UC_Validar : <<include>>
+
+UC_Validar <.. UC_Error : <<extend>>
+
 
 @enduml
